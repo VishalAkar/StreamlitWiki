@@ -1,25 +1,30 @@
+#importing packages
 import streamlit as st
 import wikipedia as wiki
 import spacy 
 from spacy import displacy
-ner_Obj = spacy.load("en_core_web_sm")
 
+#creating object to perform NLP
+ner_Obj = spacy.load("en_core_web_sm")
 
 
 def app():
     st.title("Named Entity Recognition on Wikipedia pages")
     searchtitle = st.text_input(" Enter the topic you want to search on wikipedia")
-    print("Enetered main")
     if st.button("Analyze"):
-        print("Entered If")
-        print(type(searchtitle))
-        print(searchtitle)
+        #collecting datafrom wikipedia
         datasearch = wiki.page(searchtitle).content
-        print(datasearch)
+        
+        #performing NER on data
         data = ner_Obj(datasearch)
+        
+        #Storing the final output (i.e, data along with NER tags with HTML and css for beautification
         html = displacy.render(data,style='ent')
-        print(html)
+        
+        #displaying the results on the app
         st.markdown(html,unsafe_allow_html=True)
 
+        
+#main function
 if __name__=="__main__":
     app()
