@@ -9,3 +9,7 @@ spacy is used to perform NER in which "en_core_web_sm" package served as a corpu
 spacy
 streamlit
 wikipedia
+
+#process to use
+Just type the word which you want to search on wikipedia like 'facebook' ,'london' etc and the app will display information embeded with NER
+if for some keywords no page was found it will return an error, just try another word .
